@@ -40,6 +40,37 @@ print(l)
 print("  ", list(_2(l)))
 
 # 3.---------------------------------------------------
+print(" 3.-----------------------------------------------")
+# Gaseste toate cuvintele anagrame din lista
+
+def isAnagram(str1, str2):
+    str1_list = list(str1)
+    str1_list.sort()
+    str2_list = list(str2)
+    str2_list.sort()
+
+    return (str1_list == str2_list)
+
+l = ['ACEST', 'ASCET', 'CAR', 'IEPURE', 'CASET', 'CASTE', 'CESTA', 'ALBUM', 'MARCEL']
+a = []
+
+for word1 in l:
+    for word2 in l:
+        if(word1 == word2):
+            continue
+        if(a.__contains__(word1) and a.__contains__(word2)):
+            continue
+        if isAnagram(word1, word2):
+            if(a.__contains__(word1)):
+                a.append(word2)
+            elif(a.__contains__(word2)):
+                a.append(word1)
+            else:
+                a.append(word2)
+                a.append(word1)
+print(l)
+print("In lista data au fost gasite urmatoarele anagrame:\n")
+print(a)
 
 # 4.---------------------------------------------------
 # Dictionarul
@@ -71,6 +102,7 @@ _4(d)
 # Doua liste cu lungimi egale
 a = [1, 5, 8, 6, 4, 7, 8, 9, 5]
 b = [5, 7, 8, 7, 4, 6, 1, 8, 7]
+
 print("\n 5. ")
 
 # Produsul unei liste
@@ -150,6 +182,7 @@ for i in profesori:
 
 # 7. Facem un dictionar cu toate cuvintele din text si numarul lor de aparitie
 # Citeste continutul fisierului si il atribuie unei variabile
+print("7. ---------------------------------------")
 f = open("file.txt", "r", encoding="utf-8")
 s = f.read()
 f.close()
@@ -212,6 +245,7 @@ for index, fragment in enumerate(l):
             l[index] = new_frag
             q = 0
 
+print("8. ---------------------------------------------")
 print(l)
 
 # 9.------------------------------------------------------------------
@@ -226,6 +260,7 @@ d = {
 
 # Extragem elementele din dictionar pentru a putea opera cu ele in continuare
 l = list(d.items())
+print("9. ---------------------------------------------")
 print(d)
 # Verifica fiecare element cu fiecare element daca cheia primului este mai mare decat
 # valoare celui deal doilea
@@ -235,3 +270,4 @@ for i in range(len(l)):
             d.pop(l[i][0])
             break
 print(d)
+
