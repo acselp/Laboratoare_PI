@@ -424,23 +424,47 @@ import random
 
 
 # -----------------------------------------------------------------------------------------
+#
+# def cap_pajura():
+#     while True:
+#         print('\n\nAlegeti:\n 1. Cap\n 2. Pajura\n 3. Iesire')
+#         q = int(input('\n   >>> '))
+#
+#         if q == 3:
+#             break
+#
+#         res = random.randint(1, 2)
+#
+#         if q == res:
+#             print('\nAti castigat!!!')
+#         else:
+#             print('\nAti pierdut :(')
+#
+# cap_pajura()
 
-def cap_pajura():
+
+
+# ----------------------------------------------------------
+
+
+
+def paiul_mai_scurt():
+
     while True:
-        print('\n\nAlegeti:\n 1. Cap\n 2. Pajura\n 3. Iesire')
-        q = int(input('\n   >>> '))
 
-        if q == 3:
+        print('\n\nAlegeti un pai de la 1 la trei (`0 pentru a iesi`):')
+        q = int(input('\n   >>> '))
+        while q < 0 > 3:
+            q = int(input('\nIncercati din nou:'))
+
+        if q == 0:
             break
 
-        result = random.randint(1, 2)
+        res = random.randint(1, 3)
 
-        if q == result:
-            print('\nAti castigat!!!')
-        else:
+        if q == res:
             print('\nAti pierdut :(')
+        else:
+            print('\nAti castigat!!!')
 
-cap_pajura()
-
-
-
+paiul_mai_scurt()
