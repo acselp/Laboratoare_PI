@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="mmenu">
+    <file>Mmenu.png</file>
+  </qresource>
+</RCC>

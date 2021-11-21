@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="quitbtn">
+    <file>Quit.png</file>
+  </qresource>
+</RCC>
