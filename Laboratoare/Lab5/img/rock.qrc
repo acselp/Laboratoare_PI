@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="rock">
+    <file>rock.png</file>
+  </qresource>
+  <qresource prefix="rock2">
+    <file>rock3.png</file>
+  </qresource>
+  <qresource prefix="rockWhite">
+    <file>rock2.png</file>
+  </qresource>
+</RCC>
