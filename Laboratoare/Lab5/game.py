@@ -42,7 +42,7 @@ class Ui_MainWindow(object):
         self.startBtn.setStyleSheet("image: url(:/startBtn/Start.png);")
         self.startBtn.setText("")
         self.startBtn.setObjectName("startBtn")
-        self.quitBtn = QtWidgets.QPushButton(self.main_menu)
+        self.quitBtn = QtWidgets.QPushButton(self.main_menu, clicked=lambda :exit())
         self.quitBtn.setGeometry(QtCore.QRect(520, 500, 251, 91))
         self.quitBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.quitBtn.setStyleSheet("\n"
@@ -153,9 +153,9 @@ class Ui_MainWindow(object):
         playerChoise = 0
         if btn == self.rockBtn:
             playerChoise = 1
-        elif btn == self.paperBtn:
+        elif btn == self.scrissorsBtn:
             playerChoise = 2
-        else:
+        elif btn == self.paperBtn:
             playerChoise = 3
 
         chiose_name = ""
@@ -185,7 +185,7 @@ class Ui_MainWindow(object):
 
         self.RezultatLb.setText("")
 
-        if chiose_name == comp_chiose_name:
+        if playerChoise == compChoise:
             self.RezultatLb.setText("Egalitate")
             result = "Egalitate"
         elif ((playerChoise == 1 and compChoise == 2) or
@@ -202,13 +202,13 @@ class Ui_MainWindow(object):
             self.RezultatLb.setText("Foarfecele au castiaga")
             result = "Foarfece"
 
-            #Se printeaza castigatorul
-            if result == 'Egalitate':
-                self.CenterLb.setText(result)
-            elif result == choice_name:
-                self.CenterLb.setText("A castigat utilizatorul")
-            else:
-                self.CenterLb.setText("A castigat calculatorul")
+            # #Se printeaza castigatorul
+            # if result == 'Egalitate':
+            #     self.RezultatLb.setText(result)
+            # elif result == choice_name:
+            #     self.RezultatLb.setText("A castigat utilizatorul")
+            # else:
+            #     self.RezultatLb.setText("A castigat calculatorul")
 
     def startBtnClick(self):
         self.stackedWidget.setCurrentWidget(self.game)

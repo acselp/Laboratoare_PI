@@ -243,6 +243,9 @@ image: url(:/circles/questionMark.png);</string>
       <property name="text">
        <string/>
       </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
      </widget>
      <widget class="QPushButton" name="scrissorsBtn">
       <property name="geometry">
@@ -334,6 +337,9 @@ image: url(:/circles/scrissors.png);</string>
       </property>
       <property name="text">
        <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </widget>
