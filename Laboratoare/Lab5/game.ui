@@ -35,7 +35,7 @@ background-image: url(:/BGHD/BgHD.png);
      <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="main_menu">
      <widget class="QLabel" name="label_3">
@@ -204,22 +204,6 @@ image: url(:/circles/questionMark.png);</string>
        <string/>
       </property>
      </widget>
-     <widget class="QFrame" name="CenterLb">
-      <property name="geometry">
-       <rect>
-        <x>490</x>
-        <y>230</y>
-        <width>301</width>
-        <height>131</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-     </widget>
      <widget class="QLabel" name="PlayerLb">
       <property name="geometry">
        <rect>
@@ -270,7 +254,7 @@ image: url(:/circles/questionMark.png);</string>
        </rect>
       </property>
       <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
+       <cursorShape>SplitVCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">border-radius: 20px;
@@ -326,6 +310,30 @@ image: url(:/circles/scrissors.png);</string>
       </property>
       <property name="text">
        <string>Jucatorul</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="CenterLb">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>250</y>
+        <width>241</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Open Sans</family>
+        <pointsize>24</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>

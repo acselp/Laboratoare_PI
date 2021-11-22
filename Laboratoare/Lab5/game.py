@@ -9,7 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+import random as rn
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -56,7 +56,7 @@ class Ui_MainWindow(object):
         self.label_8.setGeometry(QtCore.QRect(500, 640, 311, 21))
         self.label_8.setStyleSheet("color: rgb(255, 255, 255);")
         self.label_8.setObjectName("label_8")
-        self.paperBtn = QtWidgets.QPushButton(self.game)
+        self.paperBtn = QtWidgets.QPushButton(self.game, clicked=lambda :self.gameStart(self.paperBtn))
         self.paperBtn.setGeometry(QtCore.QRect(1050, 500, 151, 131))
         self.paperBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.paperBtn.setStyleSheet("border-radius: 20px;\n"
@@ -70,7 +70,7 @@ class Ui_MainWindow(object):
 "image: url(:/mmenu/Mmenu.png);")
         self.mainMenuLb.setText("")
         self.mainMenuLb.setObjectName("mainMenuLb")
-        self.rockBtn = QtWidgets.QPushButton(self.game)
+        self.rockBtn = QtWidgets.QPushButton(self.game, clicked=lambda :self.gameStart(self.rockBtn))
         self.rockBtn.setGeometry(QtCore.QRect(730, 500, 151, 131))
         self.rockBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.rockBtn.setStyleSheet("border-radius: 20px;\n"
@@ -104,7 +104,7 @@ class Ui_MainWindow(object):
         self.RezultatLb.setStyleSheet("color: rgb(255, 255, 255);")
         self.RezultatLb.setText("")
         self.RezultatLb.setObjectName("RezultatLb")
-        self.scrissorsBtn = QtWidgets.QPushButton(self.game)
+        self.scrissorsBtn = QtWidgets.QPushButton(self.game, clicked=lambda :self.gameStart(self.scrissorsBtn))
         self.scrissorsBtn.setGeometry(QtCore.QRect(890, 500, 151, 131))
         self.scrissorsBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.scrissorsBtn.setStyleSheet("border-radius: 20px;\n"
@@ -138,6 +138,77 @@ class Ui_MainWindow(object):
         self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+
+    def gameStart(self, btn):
+
+        # self.ComputerLb.setStyleSheet("image: url(:/circles/questionMark.png);")
+        # self.PlayerLb.setStyleSheet("image: url(:/circles/questionMark.png);")
+
+        # Schimbam imaginea care corespunde cu butonul apasat
+        stylestr = btn.styleSheet()
+        self.PlayerLb.setStyleSheet(stylestr)
+
+        # Stabilim ce a ales jucatorul
+
+        playerChoise = 0
+        if btn == self.rockBtn:
+            playerChoise = 1
+        elif btn == self.paperBtn:
+            playerChoise = 2
+        else:
+            playerChoise = 3
+
+        chiose_name = ""
+        if playerChoise == 1:
+            choice_name = 'Piatra'
+        elif playerChoise == 2:
+            choice_name = 'Foarfece'
+        else:
+            choice_name = 'Hartie'
+
+
+        compChoise = rn.randint(1, 3)
+
+        if compChoise == 1:
+            self.ComputerLb.setStyleSheet("image: url(:/circles/rockFinal.png);")
+        elif compChoise == 2:
+            self.ComputerLb.setStyleSheet("image: url(:/circles/scrissors.png);")
+        elif compChoise == 3:
+            self.ComputerLb.setStyleSheet("image: url(:/circles/paper.png);")
+
+        if compChoise == 1:
+            comp_chiose_name = 'Piatra'
+        elif compChoise == 2:
+            comp_chiose_name = 'Foarfece'
+        else:
+            comp_chiose_name =  'Hartie'
+
+        self.RezultatLb.setText("")
+
+        if chiose_name == comp_chiose_name:
+            self.RezultatLb.setText("Egalitate")
+            result = "Egalitate"
+        elif ((playerChoise == 1 and compChoise == 2) or
+            (playerChoise == 2 and compChoise == 1)):
+            self.RezultatLb.setText("Piatra a cstiaga")
+            result = "Piatra"
+
+        elif ((playerChoise == 1 and compChoise == 3) or
+              (playerChoise == 3 and compChoise == 1)):
+            self.RezultatLb.setText("Hartia a cstiaga")
+            result = "Foarfece"
+        elif ((playerChoise == 2 and compChoise == 3) or
+              (playerChoise == 3 and compChoise == 2)):
+            self.RezultatLb.setText("Foarfecele au castiaga")
+            result = "Foarfece"
+
+            #Se printeaza castigatorul
+            if result == 'Egalitate':
+                self.CenterLb.setText(result)
+            elif result == choice_name:
+                self.CenterLb.setText("A castigat utilizatorul")
+            else:
+                self.CenterLb.setText("A castigat calculatorul")
 
     def startBtnClick(self):
         self.stackedWidget.setCurrentWidget(self.game)
