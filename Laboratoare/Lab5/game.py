@@ -83,11 +83,20 @@ class Ui_MainWindow(object):
 "image: url(:/circles/questionMark.png);")
         self.ComputerLb.setText("")
         self.ComputerLb.setObjectName("ComputerLb")
-        self.CenterLb = QtWidgets.QFrame(self.game)
+
+        self.CenterLb = QtWidgets.QLabel(self.game)
         self.CenterLb.setGeometry(QtCore.QRect(490, 230, 301, 131))
-        self.CenterLb.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.CenterLb.setFrameShadow(QtWidgets.QFrame.Raised)
         self.CenterLb.setObjectName("CenterLb")
+        self.CenterLb.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        font = QtGui.QFont()
+        font.setFamily("Open Sans")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.CenterLb.setFont(font)
+        self.CenterLb.setStyleSheet("color: rgb(255, 255, 255);")
+        self.CenterLb.setText("")
+
         self.PlayerLb = QtWidgets.QLabel(self.game)
         self.PlayerLb.setGeometry(QtCore.QRect(810, 100, 421, 311))
         self.PlayerLb.setStyleSheet("image: url(:/circles/questionMark.png);")
@@ -104,6 +113,7 @@ class Ui_MainWindow(object):
         self.RezultatLb.setStyleSheet("color: rgb(255, 255, 255);")
         self.RezultatLb.setText("")
         self.RezultatLb.setObjectName("RezultatLb")
+        self.RezultatLb.setAlignment(QtCore.Qt.AlignmentFlag.AlignHCenter)
         self.scrissorsBtn = QtWidgets.QPushButton(self.game, clicked=lambda :self.gameStart(self.scrissorsBtn))
         self.scrissorsBtn.setGeometry(QtCore.QRect(890, 500, 151, 131))
         self.scrissorsBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -181,34 +191,33 @@ class Ui_MainWindow(object):
         elif compChoise == 2:
             comp_chiose_name = 'Foarfece'
         else:
-            comp_chiose_name =  'Hartie'
+            comp_chiose_name = 'Hartie'
 
-        self.RezultatLb.setText("")
 
         if playerChoise == compChoise:
-            self.RezultatLb.setText("Egalitate")
             result = "Egalitate"
+            self.CenterLb.setText("")
         elif ((playerChoise == 1 and compChoise == 2) or
             (playerChoise == 2 and compChoise == 1)):
-            self.RezultatLb.setText("Piatra a cstiaga")
+            self.CenterLb.setText("Piatra castiga")
             result = "Piatra"
 
         elif ((playerChoise == 1 and compChoise == 3) or
               (playerChoise == 3 and compChoise == 1)):
-            self.RezultatLb.setText("Hartia a cstiaga")
-            result = "Foarfece"
+            self.CenterLb.setText("Hartia castiga")
+            result = "Hartie"
         elif ((playerChoise == 2 and compChoise == 3) or
               (playerChoise == 3 and compChoise == 2)):
-            self.RezultatLb.setText("Foarfecele au castiaga")
+            self.CenterLb.setText("Foarfecele castiaga")
             result = "Foarfece"
 
-            # #Se printeaza castigatorul
-            # if result == 'Egalitate':
-            #     self.RezultatLb.setText(result)
-            # elif result == choice_name:
-            #     self.RezultatLb.setText("A castigat utilizatorul")
-            # else:
-            #     self.RezultatLb.setText("A castigat calculatorul")
+        #Se printeaza castigatorul
+        if result == 'Egalitate':
+            self.RezultatLb.setText(result)
+        elif result == choice_name:
+            self.RezultatLb.setText("A castigat jucatorul")
+        else:
+            self.RezultatLb.setText("A castigat calculatorul")
 
     def startBtnClick(self):
         self.stackedWidget.setCurrentWidget(self.game)
