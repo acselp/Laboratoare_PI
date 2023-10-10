@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="circles">
+    <file>paper.png</file>
+    <file>questionMark.png</file>
+    <file>scrissors.png</file>
+    <file>rockFinal.png</file>
+  </qresource>
+</RCC>
